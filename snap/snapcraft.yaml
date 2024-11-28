@@ -20,7 +20,7 @@ parts:
       - golang-go
       - git
     stage-packages:
-      - libgo1.18             # Add other dependencies needed for your app
+      - golang-go             # Add other dependencies needed for your app
 
     # Build the binary directly from the Go project, using go.mod to handle dependencies
     override-build: |
