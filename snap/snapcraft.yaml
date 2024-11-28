@@ -14,10 +14,11 @@ apps:
 parts:
   packonix:
     plugin: go                # Using the Go plugin to build the application
-    source: https://github.com/thehavays/packonix  # GitHub repository URL
+    source: git+https://github.com/thehavays/packonix.git
     build-packages:
       - build-essential
       - golang-go
+      - git
     stage-packages:
       - libgo1.18             # Add other dependencies needed for your app
 
