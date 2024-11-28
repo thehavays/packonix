@@ -8,7 +8,6 @@ grade: stable                # The grade of the Snap (can be stable, candidate, 
 confinement: classic          # Use classic confinement instead of strict
 architectures:
   - amd64
-  - arm64
 
 apps:
   packonix:
@@ -17,5 +16,11 @@ apps:
 parts:
   packonix:
     plugin: go                # Using the Go plugin to build the application
-    source: git+https://github.com/thehavays/packonix.git
-    source-type: git
+    source: .
+    build-packages:
+      - build-essential
+      - golang-go
+    stage-packages:
+      - golang-go             # Add other dependencies needed for your app
+    override-build: |
+      go build -o $SNAPCRAFT_PART_INSTALL/packonix main.go shellapps.go
