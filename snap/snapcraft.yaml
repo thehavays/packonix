@@ -1,11 +1,14 @@
 name: packonix               # The name of your Snap
 base: core22
-version: '1.0.0'             # The version of your app
+version: '0.0.1'             # The version of your app
 summary: A Go-based app      # A short summary of the app
 description: |
   A detailed description of your Go application.
 grade: stable                # The grade of the Snap (can be stable, candidate, beta, or edge)
 confinement: classic          # Use classic confinement instead of strict
+architectures:
+  - amd64
+  - arm64
 
 apps:
   packonix:
@@ -15,13 +18,4 @@ parts:
   packonix:
     plugin: go                # Using the Go plugin to build the application
     source: git+https://github.com/thehavays/packonix.git
-    build-packages:
-      - build-essential
-      - golang-go
-      - git
-    stage-packages:
-      - golang-go             # Add other dependencies needed for your app
-
-    # Build the binary directly from the Go project, using go.mod to handle dependencies
-    override-build: |
-      go build -o $SNAPCRAFT_PART_INSTALL/packonix main.go shellapps.go
+    source-type: git
