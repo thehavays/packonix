@@ -106,6 +106,17 @@ func (s *ShellAppInstaller) InstallNvm() {
 	runShellScript(script, "nvm")
 }
 
+// Install Termius
+func (s *ShellAppInstaller) InstallTermius() {
+	fmt.Println("Installing Termius...")
+	script := `
+		wget https://www.termius.com/download/linux/Termius.deb
+		sudo apt install ./Termius.deb  --fix-broken -y
+		rm -rf Termius.deb
+	`
+	runShellScript(script, "termius")
+}
+
 // Utility function to execute shell scripts
 func runShellScript(script, appName string) {
 	cmd := exec.Command("bash", "-c", script)
