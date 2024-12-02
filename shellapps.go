@@ -117,6 +117,17 @@ func (s *ShellAppInstaller) InstallTermius() {
 	runShellScript(script, "termius")
 }
 
+// Install AnyDesk
+func (s *ShellAppInstaller) InstallAnydesk() {
+	fmt.Println("Installing AnyDesk...")
+	script := `
+		wget https://download.anydesk.com/linux/anydesk_6.4.0-1_amd64.deb
+		sudo apt install ./anydesk_6.4.0-1_amd64.deb  --fix-broken -y
+		rm -rf anydesk_6.4.0-1_amd64.deb
+	`
+	runShellScript(script, "anydesk")
+}
+
 // Utility function to execute shell scripts
 func runShellScript(script, appName string) {
 	cmd := exec.Command("bash", "-c", script)
