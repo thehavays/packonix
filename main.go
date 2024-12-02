@@ -29,7 +29,7 @@ var snapClassicApps = map[string]bool{
 	"tmux":              true, // tmux
 }
 var shellApps = []string{
-	"docker", "nvim", "fzf", "eza", "nvm", "termius",
+	"docker", "nvim", "fzf", "eza", "nvm", "termius", "anydesk",
 }
 
 func main() {
@@ -157,6 +157,8 @@ func runShellScripts(scripts []string) {
 			installer.InstallNvm()
 		case "termius":
 			installer.InstallTermius()
+		case "anydesk":
+			installer.InstallAnydesk()
 		default:
 			fmt.Printf("No installation script defined for %s.\n", script)
 		}
